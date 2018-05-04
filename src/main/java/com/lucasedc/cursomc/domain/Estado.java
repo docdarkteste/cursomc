@@ -11,7 +11,12 @@ import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.OneToMany;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
+import com.fasterxml.jackson.annotation.JsonIdentityInfo;
+import com.fasterxml.jackson.annotation.ObjectIdGenerators;
+
 @Entity
+@JsonIdentityInfo(generator=ObjectIdGenerators.IntSequenceGenerator.class, property="estadoid")
 public class Estado implements Serializable{
 	
 	/**
@@ -71,7 +76,8 @@ public class Estado implements Serializable{
 	}
 
 
+	
 	@OneToMany(mappedBy="estado")
-	private List<Cidade> cidades = new ArrayList<Cidade>();
+	private List<Cidade> cidades = new ArrayList<>();
 
 }
